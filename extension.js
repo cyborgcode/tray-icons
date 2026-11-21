@@ -21,7 +21,8 @@ const CUSTOM_ICONS = [
     {pattern: /filee/i, file: 'filee-tray.svg'},
     {pattern: /beeper/i, file: 'beeper-tray.svg'},
 ];
-const TOGGLE_ICON = 'view-reveal-symbolic';
+// The toggle is on while icons are hidden, like Do Not Disturb, so its icon is the crossed-out eye.
+const TOGGLE_ICON = 'view-conceal-symbolic';
 const FALLBACK_APP_ICON = 'application-x-executable-symbolic';
 const LOG_TAG = '[filee-tray-toggle]';
 
@@ -75,7 +76,7 @@ export default class TrayIconsToggleExtension extends Extension {
         ({shown: this._shown, exceptions: this._exceptions} = this._loadState());
 
         this._toggle = new TrayToggle();
-        this._toggle.checked = this._shown;
+        this._toggle.checked = !this._shown;
         this._updateSubtitle();
         this._toggle.connect('notify::checked', () => this._onToggled());
         this._toggle.menu.connect('open-state-changed', (_menu, open) => {
@@ -341,7 +342,7 @@ export default class TrayIconsToggleExtension extends Extension {
     // ---- toggle, exceptions menu and saved state ------------------------------------------------------------
 
     _onToggled() {
-        this._shown = this._toggle.checked;
+        this._shown = !this._toggle.checked;
         this._updateSubtitle();
         this._saveState();
         this._applyAll();

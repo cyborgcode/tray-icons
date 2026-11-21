@@ -5,8 +5,8 @@ apps whose icon should stay.
 
 ## Features
 
-- The **Tray icons** toggle in Quick Settings hides every tray icon, and the Accessibility menu, while apps keep
-  running. Turn it on again to show them.
+- Turning the **Tray icons** toggle in Quick Settings on hides every tray icon, and the Accessibility menu, while apps
+  keep running. Turn it off to show them again.
 - The toggle's arrow opens a list of the icons in the top bar. Check an app to keep its icon visible while the others
   are hidden. Several can be checked without the menu closing.
 - Exceptions are remembered while an app is closed, and apply again when it comes back. The list only shows apps that
